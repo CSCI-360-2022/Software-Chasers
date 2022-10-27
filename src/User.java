@@ -7,7 +7,7 @@ public class User {
     private int CardInfo;
     //private Ticket tickets[];
 
-    private User(String userName, String email, String password){
+    public User(String userName, String email, String password){
         this.userName = userName;
         this.email = email;
         if (verifyPassword(password)) {
@@ -33,5 +33,9 @@ public class User {
 
     public static void purchaseTicket(){
         // TODO: Write function to purchase a ticket (using fake information);
+    }
+
+    public String toString(){
+        return "User\t"+userName +"\nEmail\t"+ email +"\nPassword\t"+ passwordHash;
     }
 }
