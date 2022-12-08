@@ -1,0 +1,43 @@
+<head>
+  <title>Register Form</title>
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <link rel="stylesheet" href="/css-signup-signin.css">
+</head>
+<body>
+    <div class="card">
+        <h1>Sign Up</h1>
+        <form th:action="@{/register}" method="post">
+          <div>
+          <label for="firstName">First Name / Given Name</label>  
+          <input name = "firstName" type="text" class="form-control" placeholder="Mike" id="firstName" >
+            
+          </div>
+          <div>
+          <label for="lastName">Last Name / Surname / Family Name</label>
+          <input name = "lastName" type="text" class="form-control" placeholder="Wazowski" id="lastName">
+            
+          </div>
+          <div>
+          <label for="email">Email Address</label>  
+          <input name = "email" type="text" class="form-control" placeholder="wazowskim@g.cofc.edu" id="email">
+            
+          </div>
+          <div>
+            <label for="username">Username</label>
+            <input name = "username" type="text" class="form-control" placeholder="greenMachine" id="username" >  
+          </div>
+          <div>
+            <label for="password">Password</label>
+            <input name = "password" type="password" placeholder="15CharPassword!"  id="password" class="form-control">
+            <p>Password must be exactly 15 letters long</p>
+            <p>Password must contain an upppercase letter</p>
+            <p>Password must contain a lowercase letter</p>
+            <p>Password must contain a number</p>
+            <p>Password must contain a symbol</p>
+          </div>
+          <button type="submit" class="">Create Account</button>
+        </form>
+    </div>
+</body>
+</html>

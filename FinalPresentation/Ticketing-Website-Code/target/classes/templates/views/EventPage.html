@@ -1,0 +1,149 @@
+<head>
+	<meta charset="utf-8"/>
+	<link rel="preconnect" href="https://rsms.me/">
+	<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+	<link rel="stylesheet" href="/search-css.css">
+<script>
+window.onload = function(){
+  
+}
+</script>
+<script>
+
+function updatePreview(id){
+	let event;
+	for(let i = 0; i < document.database.length; i++){
+		if(document.database[i].eventId == id){
+			event = document.database[i];
+		}
+	}
+
+	if(event == null){
+		alert(`error - cannot find event number ${id} in database`);
+	}
+
+	console.log(event)
+	document.querySelector("#details-container img.bgimage").src = event.foreGroundImageUrl;
+	document.querySelector("#details-container div.card h1").innerText=event.eventName;
+	document.querySelector("#details-container div.card h3.location").innerText=event.eventLocation;
+	document.querySelector("#details-container div.card h3.time").innerText=event.startTime;
+	document.querySelector("#details-container div.card div.description").innerText=event.eventDetails;
+	document.querySelector("#buy").innerText=`Buy ticket for $${event.price}.00`;
+	document.querySelector("#buy").setAttribute('href',`/purchasePage${event.eventId}`);
+
+	document.querySelectorAll("#buy").forEach(element=>{
+		element.addEventListener("click",x=>{
+			document.location.href=`https://cougar.events/purchasePage${event.eventId}`
+		})
+	});
+}
+
+function filterResults(){
+	let hits = 0;
+	let query = document.getElementById("searchbox").value;
+
+	if(document.lastQuery == query){
+		return
+	} else {
+		document.lastQuery = query
+	}
+
+	console.log(`Searching for query "${query}"`)
+	
+	
+	for(let i = 0; i < document.database.length; i++){
+		event = document.database[i];
+		previewElement = document.querySelector(`#event-list div[eventId="${event.eventId}"]`);
+		let match= (
+			query == "" ||
+			(event.eventName.toLowerCase().indexOf(query.toLowerCase()) != -1)
+		)
+
+		previewElement.style.display = match?"block":"none";
+		hits = match? hits+1: hits;
+	}
+	
+	document.getElementById("search-num-results").innerText = `Found ${hits} results`;
+}
+
+async function getDB(){
+	let res = await fetch("/api/events/all")
+	document.database = JSON.parse(await res.text());
+}
+
+
+function populate(){
+	let deetContainer = document.getElementById("event-list")
+	deetContainer.innerHTML = "<span id=\"search-num-results\">Found X Results</span>";
+
+	for(let i = 0; i < document.database.length; i++){
+		event = document.database[i];
+		deetContainer.innerHTML += `
+			<div eventid="${event.eventId}" class="event-preview"/>
+				<span class="time">${event.startTime}</span>
+				<span class="location">${event.eventLocation}</span>
+				<span class="title">${event.eventName}</span>
+				<div class="gradient"></div>
+				<img src="${event.backGroundImageUrl}"></img>
+			</div>
+		`
+	}
+}
+
+function registerEventPreviewEventHandlers(){
+	document.querySelectorAll("#event-list > div.event-preview").forEach(element => {
+		let id = element.getAttribute("eventid");
+		addEventListener('click', (event) => {})
+			element.addEventListener("click", (event) => {
+			updatePreview(id);
+		});
+	});
+}
+
+function registerSearchEventHandlers(){
+	// document.getElementById("searchbox").addEventListener("keydown",filterResults)
+	setInterval(filterResults,300);
+}
+
+async function init(){
+	await getDB();
+	populate();
+
+	registerEventPreviewEventHandlers()
+	registerSearchEventHandlers();
+
+	//register buttons as clickable;
+
+	setTimeout(function() {
+		updatePreview(document.database[0].eventId);
+	}, 400)
+}
+
+</script>
+</head>
+<body onload="init()">
+	<div id="header">
+		<div class="search">
+			<input id="searchbox" type="text" class="search" placeholder="Search for Events"></input><button class="search"/>
+		</div>
+	</div>
+	<div id="body">
+		<div id="event-list">
+			<span id="search-num-results">Found X Results</span>
+		</div>
+		<div id="details-container">
+			<img class="bgimage" src=""/>
+			<div class="card">
+				
+				<h1>Loading Event</h1>
+				<h3 class="location">Location</h3>
+				<h3 class="time">Febuary 31, 2099, 25:61 EDT</h3>				
+				<div class="description">
+					<p>Now loading events!</p>
+				</div>
+				<button id="buy">Buy for $10.00</button>
+			</div>
+	
+		</div>
+	</div>
+</body>

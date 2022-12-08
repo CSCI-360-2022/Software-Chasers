@@ -1,0 +1,249 @@
+@charset "UTF-8";
+/* CSS */
+:root {
+	font-family: 'Inter', sans-serif;
+}
+
+@supports (font-variation-settings: normal) {
+	:root {
+		font-family: 'Inter var', sans-serif;
+	}
+}
+
+/**
+ * Header and searchbar CSS
+ */
+#header {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	height: 56px;
+	background: #8a8a8a;
+	text-align: center;
+	vertical-align: center;
+	display: flex;
+	z-index: 1;
+}
+
+#header div.search {
+	margin: auto;
+	font-size: 16px;
+	border: 0;
+	border-radius: 4px;
+}
+
+#header div.search input.search {
+	height: 42px;
+	outline: none !important;
+	border-width: 0px 0px 0px 0px;
+	border-color: #888888;
+	border-style: solid inset;
+	padding: 0px 10px 0px 10px;
+	border-radius: 4px 0px 0px 4px;
+	box-sizing: content-box;
+	transition: border 0.05s ease-in;
+}
+
+#header div.search input.search:focus {
+	border-color: blue;
+	border-width: 4px 0px 4px 4px;
+}
+
+#header div.search input.search:focus ~ button {
+	border-style: solid;
+	border-color: blue;
+	border-width: 4px 4px 4px 0px;
+}
+
+#header div.search button.search {
+	transition: border 0.05s ease-in;
+	outline: none !important;
+	height: 42px;
+	width: 42px;
+	border-width: 0px;
+	border-radius: 0px 4px 4px 0px;
+	border-color: #613C3C;
+	background: #613C3C;
+	box-sizing: content-box;
+	padding: 0;
+}
+
+#header div.search button.search:active {
+	box-shadow: 0px 0px 4px 4px black inset;
+}
+
+#header div.search button.search::after {
+	content: "🔍";
+}
+
+#event-list {
+	background: #b5b5b5;
+	position: absolute;
+	left: 0px;
+	width: 284px;
+	top: 54px;
+	bottom: 0px;
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	gap: 12px;
+	box-shadow: 0px 0px 8px 0px black;
+}
+
+#event-list #search-num-results {
+	align-self: start;
+	margin: 14px 0 0 16px;
+	font-size: 12px;
+	color: #717171;
+}
+
+.event-preview {
+	position: relative;
+	display: block;
+	width: 256px;
+	height: 100px;
+}
+
+.event-preview span {
+	position: absolute;
+	z-index: 2;
+	left: 10px;
+	right: 10px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.event-preview span.title {
+	top: 70px;
+	color: #fff;
+}
+
+.event-preview span.time, .event-preview span.location {
+	color: #8a8a8a;
+	font-size: 8px;
+}
+
+.event-preview span.time {
+	top: 60px;
+}
+
+.event-preview span.location {
+	top: 50px;
+}
+
+.event-preview img {
+	z-index: 0;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	object-fit: cover;
+	width: 256px;
+	height: 100px;
+}
+
+.event-preview div.gradient {
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	z-index: 1;
+	background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 50%);
+}
+
+#details-container {
+	position: absolute;
+	left: 284px;
+	top: 56px;
+	right: 0px;
+	bottom: 0px;
+	background-size: cover;
+	background-position: center;
+}
+
+#details-container img.bgimage {
+	filter: brightness(30%);
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+
+.card {
+	position: absolute;
+	margin: 20px 20px 0px 20px;
+	padding: 25px;
+	bottom: 0px;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	border-radius: 25px 25px 0 0;
+	background: linear-gradient(180deg, rgba(102, 0, 0, 0.5) 0%, rgba(226, 207, 207, 0.8) 80%, rgba(255, 255, 255, 0.8) 100%);
+}
+
+.card * {
+	color: white;
+	margin: 0px;
+	padding: 0px;
+}
+
+.card h1 {
+	font-weight: 800;
+	padding-bottom: 10px;
+	margin-left: 0;
+	margin-top: 0;
+}
+
+.card h3 {
+	background: #220000;
+	border-radius: 15px;
+	height: 30px;
+	font-size: 16px;
+	line-height: 30px;
+	padding-right: 15px;
+	padding-left: 5px;
+	vertical-align: middle;
+	display: inline-block;
+	width: auto;
+	padding-right: 10px;
+}
+
+.card h3:before {
+	display: inline-block;
+	width: 32px;
+	text-align: center;
+}
+
+.card h3.time:before {
+	content: "📅";
+}
+
+.card h3.location:before {
+	content: "📍";
+}
+
+.card .description {
+	margin-top: 20px;
+}
+
+.card .description p {
+	padding-bottom: 10px;
+}
+
+.card button {
+	color: black;
+	font-weight: 600;
+	font-size: 14px;
+	height: 32px;
+	line-height: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+}

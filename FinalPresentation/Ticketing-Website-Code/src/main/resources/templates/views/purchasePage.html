@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/loginForm.css">
+</head>
+<body>
+<div class="card">
+    <form th:action="@{/purchasePage}" method="post">
+        <h1>Purchase your Ticket</h1><br>
+        <div>
+            <label for="creditcard">Credit Card Number</label><br>
+            <input name="creditcard" maxlength="16" type="number" placeholder="1234 1234 1234 1234"  id="creditcard" class="form-control"><br>
+        </div>
+        <div>
+            <label for="cvv">Security Code</label><br>
+            <input name="cvv" id="cvv" type="text"/>
+        </div>
+        <button type="submit">Purchase Ticket</button>
+</div>
+
+</form>
+</body>
+</html>

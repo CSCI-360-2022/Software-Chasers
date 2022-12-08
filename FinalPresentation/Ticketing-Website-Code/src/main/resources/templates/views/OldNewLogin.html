@@ -1,0 +1,40 @@
+<head>
+    <title>Back to Spring</title>
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="/loginForm.css">
+    <script>
+        window.onload = function(){
+            document.querySelectorAll("button[href]").forEach(element=>{
+                element.onclick =X=>{
+                    document.location.href=`${window.location.origin}/${element.getAttribute("href")}`
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div class="body">
+    <div class="card">
+        <h1>Cougar Events</h1>
+        <p>An event scheduler by Anabelle, Matt, and Adaora</p>
+        <form class=login method="post" th:action="@{/login}">
+            <div>
+                <label for="username">Username:</label><br>
+                <input placeholder="johnny-appleseed"  name="username" type="text" id="username"/>
+            </div>
+            <div>
+                <label for="password">Password:</label><br>
+                <input placeholder="15charPassword!" name="password" type="password" id="password"/>
+            </div>
+
+            <button type="submit" value="Login">Log In</button>
+        </form>
+        <p>or</p>
+        <button class="btn btn-lg btn-primary" href="/register" role="button">Register</button>
+        <button class="btn btn-lg btn-primary" href="/createNewEvent" role="button">Add Event</button>
+    </div>
+</div>
+</body>
+</html>
+

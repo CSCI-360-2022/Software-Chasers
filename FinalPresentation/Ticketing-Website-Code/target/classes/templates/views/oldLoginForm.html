@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.springframework.org/schema/data/jaxb"
+      layout:decorate="~{fragments/main_layout}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login Form</title>
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+</head>
+<body>
+
+<div layout:fragment="content" class="container">
+    <div class="simple-login-container col-md-4 offset-md-4">
+        <h2>Login Form</h2>
+        <form th:action="@{/login}" method="post">
+            <fieldset>
+                <div class="form-group">
+                    <label for="username" class="form-control-label">Username</label> <input
+                        type="text" class="form-control" id="username" name="username"/>
+
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-control-label">Password</label> <input
+                        type="password" class="form-control"
+                        id="password" name="password"/>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6  form-group">
+                        <input type="submit" class="btn btn-lg btn-success btn-block" value="Login">
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6  form-group">
+                        <a href="/register" class="btn btn-lg btn-primary btn-block">Register</a>
+                    </div>
+                </div>
+            </fieldset>
+    </div>
+</div>
+</body>
+</html>

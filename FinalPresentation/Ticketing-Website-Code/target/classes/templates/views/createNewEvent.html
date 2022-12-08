@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.springframework.org/schema/data/jaxb"
+      xmlns="http://www.w3.org/1999/html"
+      layout:decorate="~{fragments/main_layout}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Event Form</title>
+</head>
+<body>
+
+<div layout:fragment="content" class="container">
+    <div class="simple-login-container col-md-4 offset-md-4">
+        <h2>Create New Event</h2>
+        <form th:action="@{/create-new-event}" method="post">
+            <fieldset>
+                <div class="form-group">
+                    <label for="eventName" class="form-control-label">Event Name</label> <input
+                        type="text" class="form-control" id="eventName" name="eventName"/>
+                </div>
+                <div class="form-group">
+                    <label for="capacity" class="form-control-label">Capcity</label> <input
+                        type="number" class="form-control" id="capacity" name="capacity"/>
+
+                </div>
+                <div class="form-group">
+                    <label for="price" class="form-control-label">Price</label> <input
+                        type="number" class="form-control" id="price" name="price"/>
+
+                </div>
+                <div class="form-group">
+                    <label for="startTime" class="form-control-label">Start Time</label> <input
+                        type="date" class="form-control" id="startTime" name="startTime"/>
+
+                </div>
+                <div class="form-group">
+                    <p><label for="eventDetails" class="form-control-label">Description of event:</label></p>
+                    <textarea type="text" class="form-control" id="eventDetails" name="eventDetails"></textarea>
+
+                </div>
+                <div class="col-md-12 form-group">
+                    <input type="submit" class="btn btn-lg btn-primary btn-block">
+                </div>
+            </fieldset>
+        </form>
+
+</div>
+</body>
+</html>

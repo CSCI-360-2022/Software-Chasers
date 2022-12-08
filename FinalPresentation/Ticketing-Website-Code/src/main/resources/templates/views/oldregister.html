@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.springframework.org/schema/data/jaxb"
+      layout:decorate="~{fragments/main_layout}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Register Form</title>
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+</head>
+<body>
+<div layout:fragment="content" class="container" >
+    <div class="simple-login-container  col-md-4 offset-md-4">
+        <h2>Register Form</h2>
+        <form th:action="@{/register}" method="post">
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <input name = "username" type="text" class="form-control" placeholder="User Name" id="username" >
+                </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <input name = "firstName" type="text" class="form-control" placeholder="First Name" id="firstName" >
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <input name = "lastName" type="text" class="form-control" placeholder="Last Name" id="lastName">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <input name = "email" type="text" class="form-control" placeholder="email" id="email">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <input name = "password" type="password" placeholder="Enter your Password"  id="password" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <input type="submit" class="btn btn-lg btn-primary btn-block">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
